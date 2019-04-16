@@ -1,5 +1,5 @@
 let jwt = require('jsonwebtoken');
-let config = require('../config');
+let config = require('../config/config.js');
 
 class HandlerGenerator {
     login (req, res) {
