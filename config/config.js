@@ -1,3 +1,4 @@
 module.exports = {
-    secret: 'yourconfigurationtoken'
+    secret: 'yourconfigurationtoken',
+    refreshSecret : 'yourrefreshconfigurationtoken'
 };
