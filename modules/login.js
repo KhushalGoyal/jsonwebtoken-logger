@@ -10,6 +10,7 @@ router.post('/login',handlers.login)
 
 router.get('/home',middleware.checkToken, handlers.index)
 
-router.get('/refresh',handlers.refresh_token)
+router.post('/refresh',handlers.refresh_token)
+
 
 module.exports = router;

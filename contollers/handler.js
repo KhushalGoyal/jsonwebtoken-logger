@@ -48,11 +48,25 @@ class HandlerGenerator {
       });
     }
     refresh_token(req,res){
-      let token = req.query.refresh_token;
-      jwt.verify(token, config.refreshSecret, (err, decoded) => {
-        console.log(token)
-        console.log(config.secret)
-        console.log(decoded)
+      let refreshToken = req.body.refreshToken;
+      jwt.verify(refreshToken, config.refreshSecret, (err, decoded) => {
+        if(decoded){
+          let accessToken = jwt.sign({username: decoded.username},
+            config.secret,
+            { 
+              expiresIn: '2m' // expires in 24 hours
+            }
+          );
+          res.json({
+            success: true,
+            message: 'Authentication successful!',
+            accessToken: accessToken,
+            refreshToken: refreshToken
+          })
+        }else{
+          res.send(401).json({message: "Authentication failed"})
+        }
+        
       })
     }
   }
