@@ -3,7 +3,7 @@ let config = require('../config/config.js');
 
 class HandlerGenerator {
     login (req, res) {
-      let username = req.body.username;
+      let username = req.body.email;
       let password = req.body.password;
       // For the given username fetch user from DB
       let mockedUsername = 'admin';
@@ -40,12 +40,6 @@ class HandlerGenerator {
           message: 'Authentication failed! Please check the request'
         });
       }
-    }
-    index (req, res) {
-      res.json({
-        success: true,
-        message: 'Index page'
-      });
     }
     refresh_token(req,res){
       let refreshToken = req.body.refreshToken;
