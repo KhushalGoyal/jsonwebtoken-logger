@@ -11,8 +11,9 @@ class AddBlogPost{
         res.json({message : "Hello"})
     }
     
-    addUser(req,res){
-
+    addBlogDetails(req,res){
+        console.log(res.body);
+        res.json({message : "Add Blog details"})
     }
 }
 
