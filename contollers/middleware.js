@@ -7,8 +7,7 @@ let checkToken = (req, res, next) => {
     // Remove Bearer from string
     token = token.slice(7, token.length);
   }
-
-  if (token) {
+  if (token && token != "null") {
     jwt.verify(token, config.secret, (err, decoded) => {
       if (err) {
         return res.status(401).json({
@@ -27,6 +26,15 @@ let checkToken = (req, res, next) => {
     });
   }
 };
+
+// async function verify(token) {
+//   const ticket = await client.verifyIdToken({
+//       idToken: token,
+//       audience: '',  // Specify the CLIENT_ID of the app that accesses the backend
+//   });
+//   const payload = ticket.getPayload();
+//   return payload;
+// }
 
 module.exports = {
   checkToken: checkToken,

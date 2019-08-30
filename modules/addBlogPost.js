@@ -8,5 +8,10 @@ let blogPost = new BlogPost();
 
 router.post('/api/addBlogDetails',middleware.checkToken,blogPost.addBlogDetails)
 
+router.get('/api/getBlogs',blogPost.getBlogs)
+
+router.post('/api/voteForFavorite',middleware.checkToken,blogPost.voteForFavorite)
+
+router.get('/api/checkToken',middleware.checkToken,blogPost.dummyAPI)
 
 module.exports = router;

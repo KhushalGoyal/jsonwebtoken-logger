@@ -8,6 +8,7 @@ var blogSchema = new Schema({
   comments: [{ body: String, date: Date }],
   date: { type: Date, default: Date.now },
   hidden: Boolean,
+  coverphotolink: String,
   meta: {
     votes: Number,
     favs:  Number

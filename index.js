@@ -15,11 +15,14 @@ mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true})
   .catch(err => { throw err });
 
 app.use(bodyparser.json());
+
 app.use(cors());
 app.use(morgan('combined', { stream: winston.stream }));
+
 app.use(login);
 app.use(blogPost);
 app.use(user);
+
 app.use((_req,res,next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
